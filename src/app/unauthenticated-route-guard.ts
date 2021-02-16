@@ -6,17 +6,17 @@ import "firebase/auth";
 @Injectable({
     providedIn: 'root'
 })
-export class RouteGuard implements CanActivate {
+export class UnauthenticatedRouteGuard implements CanActivate {
 
     constructor(private router: Router) {}
     
     canActivate() {
         if (firebase.auth().currentUser) {
-            return true;
+            this.router.navigateByUrl('/');
+            return false;
         }
         else {
-            this.router.navigateByUrl('/login');
-            return false;
+            return true;
         }
     }
 

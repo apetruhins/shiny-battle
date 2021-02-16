@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from 'firebase/app';
-import "firebase/auth";
+import { NavigationStart, Router } from '@angular/router';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-header',
@@ -11,21 +11,20 @@ export class HeaderComponent implements OnInit {
 
   isLoggedIn: boolean = false
 
-  constructor() { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-  ngOnInit(): void {
-    firebase.auth().onAuthStateChanged(userData => {
-      if (userData) {
-        this.isLoggedIn = true
-      }
-      else {
-        this.isLoggedIn = false
-      }
-    })
+  ngOnInit(): void { 
+    this.router.events
+      .subscribe(event => {
+        if(event instanceof NavigationStart) {
+          this.isLoggedIn = this.firebaseService.isLoggedIn()
+        }
+      })
   }
 
-  logout() {
-    console.log('Logout pressed')
+  async logout() {
+    await this.firebaseService.logout()
+    this.router.navigateByUrl('/login')
   }
 
 }

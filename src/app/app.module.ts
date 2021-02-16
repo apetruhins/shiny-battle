@@ -9,8 +9,6 @@ import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ShinyListComponent } from './shiny-list/shiny-list.component';
 import { EditComponent } from './edit/edit.component';
-import { RouteGuard } from './route-guard';
-import { FirebaseService } from './firebase.service';
 
 @NgModule({
   declarations: [
@@ -25,7 +23,7 @@ import { FirebaseService } from './firebase.service';
     AppRoutingModule,
     FormsModule
   ],
-  providers: [RouteGuard],
+  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

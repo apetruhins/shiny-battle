@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import firebase from 'firebase/app';
 
-import { environment } from '../environments/environment';
+import { FirebaseService } from './firebase.service';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +11,9 @@ export class AppComponent implements OnInit {
   
   title = 'Shiny Battle';
 
+  constructor(private firebaseService: FirebaseService) { }
+  
   ngOnInit(): void {
-    firebase.initializeApp(environment.firebaseConfig)
+    this.firebaseService.initialize()
   }
 }

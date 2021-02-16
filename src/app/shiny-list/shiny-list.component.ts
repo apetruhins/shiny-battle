@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { FirebaseService } from '../firebase.service';
 
 @Component({
   selector: 'app-shiny-list',
@@ -7,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ShinyListComponent implements OnInit {
 
-  constructor() { }
+  constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
+    if (!this.firebaseService.isLoggedIn()) {
+      this.router.navigateByUrl('/login')
+    }
   }
 
 }
