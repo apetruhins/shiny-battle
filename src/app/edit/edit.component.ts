@@ -12,7 +12,7 @@ export class EditComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   ngOnInit(): void {
-    if (!this.firebaseService.isLoggedIn()) {
+    if (!this.firebaseService.isLoggedIn) {
       this.router.navigateByUrl('/login')
     }
   }

@@ -9,22 +9,21 @@ import { FirebaseService } from '../firebase.service';
 })
 export class HeaderComponent implements OnInit {
 
-  isLoggedIn: boolean = false
-
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
-  ngOnInit(): void { 
-    this.router.events
-      .subscribe(event => {
-        if(event instanceof NavigationStart) {
-          this.isLoggedIn = this.firebaseService.isLoggedIn()
-        }
+  ngOnInit(): void { }
+
+  logout() {
+    this.firebaseService.logout()
+      .then(() => {
+        this.firebaseService.isLoggedIn = false
+        this.router.navigateByUrl('/login')
       })
+      .catch(() => {})
   }
 
-  async logout() {
-    await this.firebaseService.logout()
-    this.router.navigateByUrl('/login')
+  isLoggedIn() {
+    return this.firebaseService.isLoggedIn
   }
 
 }

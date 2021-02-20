@@ -9,23 +9,29 @@ import { FirebaseService } from '../firebase.service';
 })
 export class LoginComponent implements OnInit {
 
-  email = ''
+  username = ''
   password = ''
 
   constructor(private router: Router, private firebaseService: FirebaseService) { }
   ngOnInit(): void {
-    if (this.firebaseService.isLoggedIn()) {
+    if (this.firebaseService.isLoggedIn) {
       this.router.navigateByUrl('/')
     }
   }
 
-  async login() {
-    if (!this.email || !this.password) {
+  login() {
+    if (!this.username || !this.password) {
       return
     }
-
-    await this.firebaseService.login(this.email, this.password)
-    this.router.navigateByUrl('/')
+    
+    this.firebaseService.login(this.username, this.password)
+      .then(user => {
+        if (user) {
+          this.firebaseService.isLoggedIn = false
+          this.router.navigateByUrl('/')
+        }
+      })
+      .catch(() => {})
   }
 
 }
