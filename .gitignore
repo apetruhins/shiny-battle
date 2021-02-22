@@ -47,3 +47,7 @@ Thumbs.db
 
 # Environment settings
 src/environments/**
+
+# Firebase
+.firebase
+.firebaserc
