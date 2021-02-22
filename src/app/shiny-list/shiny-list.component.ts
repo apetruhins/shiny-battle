@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FirebaseService } from '../firebase.service';
+import { Generation } from '../models/generation';
 import { Pokemon } from '../models/pokemon';
 import { Users } from '../models/users';
 
@@ -14,7 +15,7 @@ export class ShinyListComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   users: Users = new Users()
-  pokemons: Pokemon[] = []
+  generations: Generation[] = []
 
   async ngOnInit() {
     if (!this.firebaseService.isLoggedIn) {
@@ -22,6 +23,21 @@ export class ShinyListComponent implements OnInit {
     }
 
     this.users = await this.firebaseService.getUsers()
-    this.pokemons = await this.firebaseService.getPokemons(this.users, false)
+    this.generations = await this.firebaseService.getGenerations(this.users)
+  }
+
+  async checkedChanged($event, pokemon: Pokemon, userNumber: number) {
+    if (userNumber === 1) {
+      pokemon.user1 = $event.target.checked
+    }
+    else {
+      pokemon.user2 = $event.target.checked
+    }
+
+    await this.firebaseService.updatePokemon(pokemon, this.users)
+  }
+
+  isEditMode() {
+    return this.firebaseService.isEditMode
   }
 }
