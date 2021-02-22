@@ -15,7 +15,7 @@ export class ShinyListComponent implements OnInit {
   constructor(private firebaseService: FirebaseService, private router: Router) { }
 
   users: Users = new Users()
-  generations: Generation[] = []
+  generations: Generation[] = null
 
   async ngOnInit() {
     if (!this.firebaseService.isLoggedIn) {

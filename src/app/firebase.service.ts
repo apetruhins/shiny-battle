@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { ComponentFactoryResolver, Injectable } from '@angular/core';
 import firebase from 'firebase/app';
 import "firebase/auth";
 import "firebase/firestore";
@@ -16,9 +16,8 @@ import { Generation } from './models/generation';
 })
 export class FirebaseService {
 
-  isLoggedIn: boolean = false
-  isEditMode = false
-
+  isLoggedIn = false
+  
   constructor() { }
 
   initialize() {
@@ -63,33 +62,40 @@ export class FirebaseService {
   async getUsers(): Promise<Users> {
 
     let userId = this.getUserId();
-    let users = new Users()
+    let users: Users = JSON.parse(localStorage.getItem('users'))
 
-    await firebase.firestore().collection('users')
-      .get().then(querySnapshot => {
-        querySnapshot.forEach(u => {
-          let userData = u.data()
-          let user = new User()
+    if (!users || users.user1.userId !== userId) {
+      users = new Users()
 
-          user.userId = u.id
-          user.name = userData.name
+      await firebase.firestore().collection('users')
+        .get().then(querySnapshot => {
+          querySnapshot.forEach(u => {
+            let userData = u.data()
+            let user = new User()
 
-          if (user.userId === userId) {
-            users.user1 = user
-          }
-          else {
-            users.user2 = user
-          }
-       })
-      })
-      .catch(() => {})
+            user.userId = u.id
+            user.name = userData.name
 
+            if (user.userId === userId) {
+              users.user1 = user
+            }
+            else {
+              users.user2 = user
+            }
+
+            localStorage.setItem('users', JSON.stringify(users))
+          })
+        })
+        .catch(() => {})
+    }
     return users
   }
 
   async getGenerations(users: Users): Promise<Generation[]> {
-    let generations: Generation[] = GENERATIONS
+    let generations = GENERATIONS
     let dbPokemons = []
+    let isShowAll = this.isShowAll
+    let searchText = this.searchText
 
     await firebase.firestore().collection('pokemons')
       .get().then(querySnapshot => {
@@ -107,7 +113,11 @@ export class FirebaseService {
       })
       .catch(() => {})
 
+    let result: Generation[] = []
+
     for (let generation of generations) {
+      let resultPokemons: Pokemon[] = []
+
       for (let pokemon of generation.pokemons) {
         const dbPokemon = dbPokemons.find(p => p.code == pokemon.code)
 
@@ -123,13 +133,32 @@ export class FirebaseService {
             users.user2.pokemonCount += 1
           }
         }
+
+        if (
+          (isShowAll || pokemon.user1 || pokemon.user2)
+          &&
+          (!searchText || searchText.length > 0 && pokemon.code.toLocaleLowerCase().includes(searchText.toLowerCase()))
+        ) {
+          resultPokemons.push(pokemon)
+        }
+      }
+
+      if (resultPokemons.length) {
+        let resultGeneration = new Generation()
+        resultGeneration.name = generation.name
+        resultGeneration.pokemons = resultPokemons
+        result.push(resultGeneration)
       }
     }
 
-    return generations
+    return result
   }
 
   async updatePokemon(pokemon: Pokemon, users: Users) {
+    if (!this.isEditMode) {
+      return
+    }
+
     if (pokemon.user1 || pokemon.user2) {
 
       let userIds = []
@@ -155,5 +184,29 @@ export class FirebaseService {
       .then(() => { })
       .catch(error => { })
     }
+  }
+
+  get isEditMode(): boolean {
+    return JSON.parse(localStorage.getItem('isEditMode'))
+  }
+
+  set isEditMode(isEdit: boolean) {
+    localStorage.setItem('isEditMode', JSON.stringify(isEdit))
+  }
+
+  get isShowAll(): boolean {
+    return JSON.parse(localStorage.getItem('isShowAll'))
+  }
+
+  set isShowAll(showAll: boolean) {
+    localStorage.setItem('isShowAll', JSON.stringify(showAll))
+  }
+
+  get searchText(): string {
+    return localStorage.getItem('searchText')
+  }
+
+  set searchText(text: string) {
+    localStorage.setItem('searchText', text)
   }
 }

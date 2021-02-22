@@ -1,16 +1,18 @@
 <div>
-    <div *ngIf="generations.length === 0">Loading...</div>
-    <table class="table" style="width: 500px" *ngIf="generations.length > 0">
+    <div *ngIf="!generations">Loading...</div>
+    <div *ngIf="generations && generations.length === 0">Pokedex is empty</div>
+    <table class="table" style="width: auto" *ngIf="generations && generations.length">
         <thead>
         <tr>
             <th scope="col"></th>
+            <th scope="col"></th>
             <th scope="col">
                 <span *ngIf="users.user1.pokemonCount > users.user2.pokemonCount">🥇</span>
-                {{users.user1.name}}
+                {{users.user1.name}} ({{users.user1.pokemonCount}})
             </th>
             <th scope="col">
                 <span *ngIf="users.user2.pokemonCount > users.user1.pokemonCount">🥇</span>
-                {{users.user2.name}}
+                {{users.user2.name}} ({{users.user2.pokemonCount}})
             </th>
         </tr>
         </thead>
@@ -28,15 +30,14 @@
                     {{pokemon.name}}<br />
                     {{pokemon.name2}}
                 </td>
-                <td>
+                <td class="pokemon-check">
                     <input class="form-check-input" type="checkbox" 
                     [checked]="pokemon.user1" (change)="checkedChanged($event, pokemon, 1)"
                     [disabled]="!isEditMode()">
                 </td>
-                <td>
-                    <input class="form-check-input" type="checkbox" 
-                    [checked]="pokemon.user2" (change)="checkedChanged($event, pokemon, 2)"
-                    [disabled]="!isEditMode()">
+                <td class="pokemon-check">
+                    <input class="form-check-input " type="checkbox" 
+                    [checked]="pokemon.user2" disabled="disabled">
                 </td>
             </tr>
         </ng-container>

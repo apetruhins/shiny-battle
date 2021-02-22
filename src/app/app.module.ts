@@ -8,7 +8,6 @@ import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
 import { LoginComponent } from './login/login.component';
 import { ShinyListComponent } from './shiny-list/shiny-list.component';
-import { EditComponent } from './edit/edit.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +15,6 @@ import { EditComponent } from './edit/edit.component';
     HeaderComponent,
     LoginComponent,
     ShinyListComponent,
-    EditComponent
   ],
   imports: [
     BrowserModule,

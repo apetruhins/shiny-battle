@@ -26,4 +26,43 @@ export class HeaderComponent implements OnInit {
     return this.firebaseService.isLoggedIn
   }
 
+  get isEditMode() {
+    return this.firebaseService.isEditMode
+  }
+
+  set isEditMode(isEdit: boolean) {
+    this.firebaseService.isEditMode = isEdit
+
+    if (!isEdit) {
+      this.reloadComponent()
+    }
+  }
+
+  get isShowAll() {
+    return this.firebaseService.isShowAll
+  }
+
+  set isShowAll(showAll: boolean) {
+    this.firebaseService.isShowAll = showAll
+    this.reloadComponent()
+  }
+
+  get searchText() {
+    return this.firebaseService.searchText
+  }
+
+  set searchText(text: string) {
+    this.firebaseService.searchText = text
+  }
+
+  search() {
+    this.reloadComponent()
+  }
+
+  reloadComponent() {
+    let currentUrl = this.router.url;
+        this.router.routeReuseStrategy.shouldReuseRoute = () => false;
+        this.router.onSameUrlNavigation = 'reload';
+        this.router.navigate([currentUrl]);
+    }
 }

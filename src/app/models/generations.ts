@@ -1,7 +1,7 @@
 import { Generation } from "./generation";
 
 export const GENERATIONS: Generation[] = [
-    { name: 'Generation 1', pokemons: [
+    { name: 'Kanto', pokemons: [
         { code: "bulbasaur", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/bulbasaur.png", name: "Bulbasaur", name2: "", number: "#001", user1: false, user2: false },
         { code: "ivysaur", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/ivysaur.png", name: "Ivysaur", name2: "", number: "#002", user1: false, user2: false },
         { code: "venusaur", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/venusaur.png", name: "Venusaur", name2: "", number: "#003", user1: false, user2: false },
@@ -155,7 +155,7 @@ export const GENERATIONS: Generation[] = [
         { code: "mew", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/mew.png", name: "Mew", name2: "", number: "#151", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 2', pokemons: [
+    { name: 'Johto', pokemons: [
         { code: "chikorita", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/chikorita.png", name: "Chikorita", name2: "", number: "#152", user1: false, user2: false },
         { code: "bayleef", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/bayleef.png", name: "Bayleef", name2: "", number: "#153", user1: false, user2: false },
         { code: "meganium", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/meganium.png", name: "Meganium", name2: "", number: "#154", user1: false, user2: false },
@@ -258,7 +258,7 @@ export const GENERATIONS: Generation[] = [
         { code: "celebi", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/celebi.png", name: "Celebi", name2: "", number: "#251", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 3', pokemons: [
+    { name: 'Hoenn', pokemons: [
         { code: "treecko", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/treecko.png", name: "Treecko", name2: "", number: "#252", user1: false, user2: false },
         { code: "grovyle", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/grovyle.png", name: "Grovyle", name2: "", number: "#253", user1: false, user2: false },
         { code: "sceptile", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/sceptile.png", name: "Sceptile", name2: "", number: "#254", user1: false, user2: false },
@@ -402,7 +402,7 @@ export const GENERATIONS: Generation[] = [
         { code: "deoxys-speed", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/deoxys-speed.png", name: "Deoxys", name2: "Speed Forme", number: "#386", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 4', pokemons: [
+    { name: 'Sinnoh', pokemons: [
         { code: "turtwig", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/turtwig.png", name: "Turtwig", name2: "", number: "#387", user1: false, user2: false },
         { code: "grotle", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/grotle.png", name: "Grotle", name2: "", number: "#388", user1: false, user2: false },
         { code: "torterra", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/torterra.png", name: "Torterra", name2: "", number: "#389", user1: false, user2: false },
@@ -521,7 +521,7 @@ export const GENERATIONS: Generation[] = [
         { code: "arceus", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/arceus.png", name: "Arceus", name2: "", number: "#493", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 5', pokemons: [
+    { name: 'Unova', pokemons: [
         { code: "victini", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/victini.png", name: "Victini", name2: "", number: "#494", user1: false, user2: false },
         { code: "snivy", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/snivy.png", name: "Snivy", name2: "", number: "#495", user1: false, user2: false },
         { code: "servine", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/servine.png", name: "Servine", name2: "", number: "#496", user1: false, user2: false },
@@ -689,7 +689,7 @@ export const GENERATIONS: Generation[] = [
         { code: "genesect", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/genesect.png", name: "Genesect", name2: "", number: "#649", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 6', pokemons: [
+    { name: 'Mega', pokemons: [
         { code: "venusaur-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/venusaur-mega.png", name: "Venusaur", name2: "", number: "#003", user1: false, user2: false },
         { code: "charizard-mega-x", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/charizard-mega-x.png", name: "Charizard", name2: "Mega Charizard X", number: "#006", user1: false, user2: false },
         { code: "charizard-mega-y", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/charizard-mega-y.png", name: "Charizard", name2: "Mega Charizard Y", number: "#006", user1: false, user2: false },
@@ -738,7 +738,10 @@ export const GENERATIONS: Generation[] = [
         { code: "lucario-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/lucario-mega.png", name: "Lucario", name2: "", number: "#448", user1: false, user2: false },
         { code: "abomasnow-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/abomasnow-mega.png", name: "Abomasnow", name2: "", number: "#460", user1: false, user2: false },
         { code: "gallade-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/gallade-mega.png", name: "Gallade", name2: "", number: "#475", user1: false, user2: false },
-        { code: "audino-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/audino-mega.png", name: "Audino", name2: "", number: "#531", user1: false, user2: false },
+        { code: "audino-mega", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/audino-mega.png", name: "Audino", name2: "", number: "#531", user1: false, user2: false }
+    ] },
+
+    { name: 'Kalos', pokemons: [
         { code: "chespin", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/chespin.png", name: "Chespin", name2: "", number: "#650", user1: false, user2: false },
         { code: "quilladin", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/quilladin.png", name: "Quilladin", name2: "", number: "#651", user1: false, user2: false },
         { code: "chesnaught", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/chesnaught.png", name: "Chesnaught", name2: "", number: "#652", user1: false, user2: false },
@@ -823,7 +826,7 @@ export const GENERATIONS: Generation[] = [
         { code: "volcanion", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/volcanion.png", name: "Volcanion", name2: "", number: "#721", user1: false, user2: false } 
     ] },
 
-    { name: 'Generation 7', pokemons: [
+    { name: 'Alonan', pokemons: [
         { code: "rattata-alolan", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/rattata-alolan.png", name: "Rattata", name2: "", number: "#019", user1: false, user2: false },
         { code: "raticate-alolan", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/raticate-alolan.png", name: "Raticate", name2: "", number: "#020", user1: false, user2: false },
         { code: "raichu-alolan", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/raichu-alolan.png", name: "Raichu", name2: "", number: "#026", user1: false, user2: false },
@@ -945,7 +948,7 @@ export const GENERATIONS: Generation[] = [
         { code: "melmetal", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/melmetal.png", name: "Melmetal", name2: "", number: "#809", user1: false, user2: false }
     ] },
 
-    { name: 'Generation 8', pokemons: [
+    { name: 'Galarian', pokemons: [
         { code: "meowth-galarian", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/meowth-galarian.png", name: "Meowth", name2: "", number: "#052", user1: false, user2: false },
         { code: "ponyta-galarian", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/ponyta-galarian.png", name: "Ponyta", name2: "", number: "#077", user1: false, user2: false },
         { code: "rapidash-galarian", imgUrl: "https://img.pokemondb.net/sprites/home/shiny/rapidash-galarian.png", name: "Rapidash", name2: "", number: "#078", user1: false, user2: false },
